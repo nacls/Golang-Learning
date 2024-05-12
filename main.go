@@ -1,6 +1,7 @@
 package main
 
-func main() {
+import "fmt"
 
-	runLibrary()
+func main() {
+	fmt.Println("Hello World") // Prints 16
 }
