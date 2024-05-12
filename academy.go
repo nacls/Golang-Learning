@@ -16,16 +16,13 @@ func calculateTeachersScores() {
 		currentTeacher := teacherNames[i]
 		switch {
 		case average >= 80:
-			fmt.Printf("%v Excellent", currentTeacher)
+			fmt.Printf("%v Excellent\n", currentTeacher)
 		case average >= 60:
-			fmt.Printf("%v Very Good", currentTeacher)
+			fmt.Printf("%v Very Good\n", currentTeacher)
 		case average >= 40:
-			fmt.Printf("%v Good", currentTeacher)
+			fmt.Printf("%v Good\n", currentTeacher)
 		default:
-			fmt.Printf("%v Fair", currentTeacher)
-		}
-		if i != len(scores) {
-			println()
+			fmt.Printf("%v Fair\n", currentTeacher)
 		}
 	}
 }
@@ -43,7 +40,6 @@ func convertStringArrToIntArr(stringArray []string) []int {
 	for _, str := range stringArray {
 		num, err := strconv.Atoi(str)
 		if err != nil {
-			fmt.Printf("Error converting %s to integer: %v\n", str, err)
 			return nil
 		}
 		intArray = append(intArray, num)
