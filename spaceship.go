@@ -16,29 +16,19 @@ func getUsagePatternsOfSpaceships() {
 func readInputPatterns() ([][]int, []string) {
 	scanner := bufio.NewScanner(os.Stdin)
 
-	// number of teachers
-	scanner.Scan()
-	line := scanner.Text()
-
-	// convert string to int
-	numOfTeachers, _ := strconv.Atoi(line)
-
 	var input [][]int
-	var teacherNames []string
+	var spaceshipNames []string
 
-	i := 0
-	for i < numOfTeachers*2 {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
+	for i := 0; i < n; i++ {
 		scanner.Scan()
-		line := scanner.Text()
-
-		if i%2 == 0 { // is writing teacher's name
-			teacherNames = append(teacherNames, line)
-		} else { // is a line of student scores
-			inputScoreLine := strings.Fields(line)
-			input = append(input, convertStringArrToIntArr(inputScoreLine))
-		}
-		i++
+		nameAndSequence := strings.Split(scanner.Text(), " ")
+		spaceshipNames = append(spaceshipNames, nameAndSequence[0])
+		sequenceString := nameAndSequence[1:]
+		input = append(input, convertStringArrToIntArr(sequenceString))
 	}
 
-	return input, teacherNames
+	return input, spaceshipNames
 }
