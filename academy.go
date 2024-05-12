@@ -11,7 +11,31 @@ import (
 func calculateTeachersScores() {
 	scores, teacherNames := readInput()
 
-	fmt.Printf("printing input: %v, %v", scores, teacherNames)
+	for i := 0; i < len(scores); i++ {
+		average := calculateScore(scores[i])
+		currentTeacher := teacherNames[i]
+		switch {
+		case average >= 80:
+			fmt.Printf("%v Excellent", currentTeacher)
+		case average >= 60:
+			fmt.Printf("%v Very Good", currentTeacher)
+		case average >= 40:
+			fmt.Printf("%v Good", currentTeacher)
+		default:
+			fmt.Printf("%v Fair", currentTeacher)
+		}
+		if i != len(scores) {
+			println()
+		}
+	}
+}
+
+func calculateScore(scores []int) int {
+	sum := 0
+	for i := 0; i < len(scores); i++ {
+		sum += scores[i]
+	}
+	return sum / len(scores)
 }
 
 func convertStringArrToIntArr(stringArray []string) []int {
